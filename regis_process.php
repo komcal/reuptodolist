@@ -1,15 +1,5 @@
 <?php
-	$servername = "yourserver";
-	$username = "yourusername";
-	$password = "password";
-	$dbname = "yourdbname";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+	include("config.php");
 	
 	$user = $_POST["user"];
 	$pass = $_POST["pass"];
@@ -44,7 +34,7 @@ $conn->close();
 	<body>
 		<form action="login_process.php" method="POST">
 			
-			<a href="http://www.zp9019.tld.122.155.177.85.no-domain.name/newtodolist/login.php">login</a>
+			<a href="http://www.komcal.com/project/todolist/login.php">login</a>
 		</form>
 	</body>
 </html>

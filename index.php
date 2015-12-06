@@ -1,13 +1,6 @@
 <?php
 	header("Content-type: text/html; charset=utf-8");
-	
-	$servername = "yourserver";
-	$username = "yourusername";
-	$password = "password";
-	$dbname = "yourdbname";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+	include("config.php");
 
 	session_start();
 	if(isset($_COOKIE["remember_user"])){
@@ -19,14 +12,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 		$result = $conn->query($sql);
 		$row = $result->fetch_assoc();
 		if(!$row){
-			header( "Location:/newtodolist/login.php" );
+			header( "Location:project/todolist/login.php" );
 		}else{
 			$_SESSION["user"] = $user;
 		}
 	}
 	
 	else if($_SESSION["user"] == ""){
-		header( "Location:/newtodolist/login.php" );
+		header( "Location:/project/todolist/login.php" );
 	}
 	
 	echo $_SESSION["user"];
@@ -47,7 +40,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 	</head>
 	
 	<body>
-		<a href="http://www.zp9019.tld.122.155.177.85.no-domain.name/newtodolist/login.php">logout</a>
+		<a href="http://www.komcal.com/project/todolist/login.php">logout</a>
 		<div id="table">
 			<h1>TOdos</h1>
 			<div id="headrow">
@@ -74,18 +67,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 				
 			</div>
 				<?php
-	$servername = "yourserver";
-	$username = "yourusername";
-	$password = "password";
-	$dbname = "yourdbname";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-	
 	$user = $_SESSION["user"];
 	$sql = "SELECT data,mark FROM todo WHERE user = '$user'";
 	$result = $conn->query($sql);
